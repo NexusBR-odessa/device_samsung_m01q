@@ -192,8 +192,7 @@ BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 # Lista de partições que devem ser assinadas pelo AVB
-BOARD_AVB_VBMETA_IMAGE_PARTITIONS := boot dtbo system vendor product odm
-
+BOARD_AVB_VBMETA_PARTITION_LIST := boot dtbo system vendor product odm
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -255,3 +254,13 @@ include $(DEVICE_PATH)/vendor_prop.mk
 
 # Inherit from the proprietary version
 -include vendor/samsung/m01q/BoardConfigVendor.mk
+
+# Face unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_KEYMASTER_VARIANT := samsung
+
+# RIL
+ENABLE_VENDOR_RIL_SERVICE := true
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+
+
