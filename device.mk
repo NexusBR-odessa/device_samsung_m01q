@@ -227,8 +227,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libnl
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+    #WifiDisplay
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -380,8 +380,8 @@ PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
 # SignApk
-PRODUCT_PACKAGES += \
-    signapk
+#PRODUCT_PACKAGES += \
+ #   signapk
 
 # RIL
 PRODUCT_PACKAGES += \

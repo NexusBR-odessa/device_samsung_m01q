@@ -1,4 +1,4 @@
-PRODUCT_PROPERTY_OVERRIDES +=  \
+PRODUCT_SYSTEM_PROPERTY_OVERRIDES +=  \
     af.fast_track_multiplier=1 \
     audio.deep_buffer.media=true \
     audio.offload.min.duration.secs=30 \

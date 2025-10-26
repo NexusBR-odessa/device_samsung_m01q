@@ -12,8 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-
 DEVICE_PATH := device/samsung/m01q
 
 # Architecture
@@ -31,6 +29,12 @@ TARGET_OTA_ASSERT_DEVICE := m01q
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := SRPTB14A003
+
+# Desabilita a inclusão de módulos de teste que não são essenciais para a ROM
+BOARD_EXCLUDE_TEST_MODULES := true
+
+# Desabilita as tarefas de testes de instrumentação
+TARGET_SUPPORTS_PLATFORM_TESTS := false
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 vmalloc=300M androidboot.usbconfigfs=true loop.max_part=7
@@ -50,7 +54,13 @@ BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := zImage
 TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_HEADER_ARCH := arm
+#TARGET_KERNEL_HEADER_ARCH := arm
+TARGET_NO_KERNEL_HEADERS := true
+TARGET_NO_KERNEL_MODULES := true
+#TARGET_KERNEL_VERSION := 4.9
+TARGET_PREBUILT_KERNEL := true
+INSTALLED_KERNEL_TARGET := $(DEVICE_PATH)/prebuilt/zImage
+TARGET_NO_KERNEL := false
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8937
@@ -87,7 +97,7 @@ BOARD_USE_QCOM_HARDWARE := true
 # Some Flags to Prevent Errors while Copying Files
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
-TARGET_COPY_OUT_SYSTEM_EXT := system/system_ext
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 
 # Build Flags
 BUILD_BROKEN_DUP_RULES := true

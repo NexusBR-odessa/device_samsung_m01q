@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2021 The LineageOS Project
 #
@@ -37,3 +38,13 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="m01qins-user 11 RP1A.200720.012 M015GXXU3BUH1 release-keys"
 
 BUILD_FINGERPRINT := samsung/m01qins/m01q:11/RP1A.200720.012/M015GXXU3BUH1:user/release-keys
+# Desabilita a inclusão de módulos de teste que não são essenciais para a ROM
+BOARD_EXCLUDE_TEST_MODULES := true
+
+# Exclui explicitamente o módulo problemático e qualquer coisa relacionada a testes de plataforma
+PRODUCT_PACKAGES := $(filter-out BluetoothInstrumentationTests, $(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out continuous_instrumentation_tests, $(PRODUCT_PACKAGES))
+
+TARGET_PREBUILT_KERNEL := device/samsung/m01q/prebuilt/zImage
+PRODUCT_COPY_FILES += \
+	$(TARGET_PREBUILT_KERNEL):kernel
